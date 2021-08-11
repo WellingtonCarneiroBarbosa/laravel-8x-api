@@ -22,6 +22,6 @@ php artisan serv --port=8001
 ```
 
 p.s
-If you receive an unauthorized message, you should pass an header called "Service-Authorization" with content "localhost_secret" to use the api.
+If you receive an unauthorized message, you should pass a header called "Service-Authorization" with content "localhost_secret" to use the api.
 
 This is customized on app/Providers/RouteServiceProvider::boot and app/Http/Middlewares/Authenticate
