@@ -18,7 +18,7 @@ return [
 
     "unauthenticated"  => [
         "description"   => "Esta uri é protegida por autenticação.",
-        "hint"          => "Verifique a validade de seu token ou faça login novamente."
+        "hint"          => "Verifique a validade de seu token."
     ],
 
     "reset-password" => [

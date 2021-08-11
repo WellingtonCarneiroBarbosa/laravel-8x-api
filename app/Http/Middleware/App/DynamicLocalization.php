@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\App;
 class DynamicLocalization
 {
     public array $accepted_localizations = [
-        'pt_BR'  
+        'pt-br',
+        'en'
     ];
 
     public array $timezones = [
-        'pt_BR' => 'America/Sao_Paulo',
+        'pt-br' => 'America/Sao_Paulo',
         'UTC'   => 'UTC',
     ];
 
