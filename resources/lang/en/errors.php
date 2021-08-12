@@ -16,6 +16,8 @@ return [
 
     "validation-hint" => "Check that the parameters provided are valid.",
 
+    "param-required" => ":param param is required to this URI",
+
     "unauthenticated"  => [
         "description"   => "This uri is protected by authentication.",
         "hint"          => "Check the validity of your token."

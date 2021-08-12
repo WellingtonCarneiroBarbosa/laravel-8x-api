@@ -49,5 +49,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'dynamic-localization' => \App\Http\Middleware\App\DynamicLocalization::class,
+        'contains-user-id' => \App\Http\Middleware\App\MustContainsUserId::class,
     ];
 }

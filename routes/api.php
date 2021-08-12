@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return apiResponser()->messageResponse("Hello World!");
-});
+})->middleware('contains-user-id');
