@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\CustomersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::middleware('contains-user-id')->group(function () {
+    Route::prefix('customers')->group(function () {
+        Route::get('/', [CustomersController::class, 'index']);
+    });
+
+});
+
 
 Route::get('/', function () {
     return apiResponser()->messageResponse("Hello World!");
-})->middleware('contains-user-id');
+});

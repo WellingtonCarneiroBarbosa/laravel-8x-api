@@ -51,4 +51,11 @@ interface HTTPResponse
      * @return JsonResponse
      */
     public function errorResponse(string $error, string $error_description, string $hint, string $message, string $http_code = Response::HTTP_INTERNAL_SERVER_ERROR, array $headers = []): JsonResponse;
+
+    /**
+     * Returns a permission response
+     *
+     * @return JsonResponse
+     */
+    public function userDoesNotHasPermissionToAction(): JsonResponse;
 }
