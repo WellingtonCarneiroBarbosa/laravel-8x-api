@@ -18,6 +18,11 @@ class DynamicLocalization
         'UTC'   => 'UTC',
     ];
 
+    public array $localization_list = [
+        'pt-br' => 'pt_BR',
+        'en'    => 'en'
+    ];
+
     /**
      * Handle an incoming request.
      *
@@ -27,10 +32,10 @@ class DynamicLocalization
      */
     public function handle(Request $request, Closure $next)
     {
-        $localization = $request->route('localization');
-
         if(! in_array($request->route('localization'), $this->accepted_localizations)) {
             $localization = 'en';
+        } else {
+            $localization = $this->localization_list[$request->route('localization')];
         }
 
         if(! isset($this->timezones[$localization])) {
