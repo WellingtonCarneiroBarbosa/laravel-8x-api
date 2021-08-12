@@ -1,5 +1,11 @@
 <?php
 
+$prefixes = [
+    'created' => 'criado com sucesso',
+    'updated' => 'atualizado com sucesso',
+    'deleted' => 'excluído permanentemente com sucesso'
+];
+
 return [
     /**
     |--------------------------------------------------------------------------
@@ -13,6 +19,12 @@ return [
 
     "users" => [
         "created" => "Usuário criado com sucesso.",
+    ],
+
+    "customers" => [
+        "created" => "Usuário {$prefixes['created']}.",
+        "updated" => "Usuário {$prefixes['updated']}.",
+        "deleted" => "Usuário {$prefixes['deleted']}.",
     ],
 
     "password-reset" => [

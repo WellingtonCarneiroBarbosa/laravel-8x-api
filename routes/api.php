@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('contains-user-id')->group(function () {
     Route::prefix('customers')->group(function () {
         Route::get('/', [CustomersController::class, 'index']);
+        Route::post('/', [CustomersController::class, 'store']);
+
+        Route::prefix("/{customer_id}")->group(function () {
+            Route::get("/", [CustomersController::class, 'show']);
+            Route::put("/", [CustomersController::class, 'update']);
+            Route::delete("/", [CustomersController::class, 'destroy']);
+        });
     });
 
 });

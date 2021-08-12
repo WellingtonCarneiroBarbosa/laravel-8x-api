@@ -17,8 +17,8 @@ class MustContainsUserId
      */
     public function handle(Request $request, Closure $next)
     {
-        if(! $request->has('user_id')) {
-            return apiResponser()->messageResponse(__("errors.param-required", ['param' => 'user_id']),
+        if(! $request->has('auth_user_id')) {
+            return apiResponser()->messageResponse(__("errors.param-required", ['param' => 'auth_user_id']),
                 Response::HTTP_BAD_REQUEST
             );
         }
