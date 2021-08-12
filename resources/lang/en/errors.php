@@ -18,6 +18,8 @@ return [
 
     "param-required" => ":param param is required to this URI",
 
+    "header-required" => ":header header is required to this URI",
+
     "unauthenticated"  => [
         "description"   => "This uri is protected by authentication.",
         "hint"          => "Check the validity of your token."

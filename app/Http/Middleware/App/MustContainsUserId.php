@@ -17,10 +17,14 @@ class MustContainsUserId
      */
     public function handle(Request $request, Closure $next)
     {
-        if(! $request->has('auth_user_id')) {
-            return apiResponser()->messageResponse(__("errors.param-required", ['param' => 'auth_user_id']),
+        if(! $request->hasHeader('Auth-User-Identification')) {
+            return apiResponser()->messageResponse(__("errors.header-required", ['header' => 'auth_user_id']),
                 Response::HTTP_BAD_REQUEST
             );
+        } else {
+            $request->request->add([
+                'auth_user_id' => $request->header('Auth-User-Identification')
+            ]);
         }
 
         return $next($request);

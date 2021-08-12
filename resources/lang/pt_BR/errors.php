@@ -18,6 +18,8 @@ return [
 
     "param-required" => "O parâmetro :param é obrigatório para essa URI",
 
+    "header-required" => "O header :header é obrigatório para essa URI",
+
     "unauthenticated"  => [
         "description"   => "Esta uri é protegida por autenticação.",
         "hint"          => "Verifique a validade de seu token."
