@@ -91,20 +91,15 @@ class APIResponse implements HTTPResponse
     public function userDoesNotHasPermissionToAction(): JsonResponse
     {
         $http_code = Response::HTTP_FORBIDDEN;
-        $headers = [];
 
-        $response = [
-            "error"                 => "user_permission_denied",
-            "error_description"     => "The user does not has permission to do that.",
-            "hint"                  => "Throws permission message error to your user",
-            "message"               => "You does not has permission to access that page",
-            "status"                => $http_code
-        ];
+        $error_type = "user_permission_denied";
 
-        return response()->json(
-            $response,
-            $http_code,
-            $headers
+        return $this->errorResponse(
+            $error_type,
+            __("errors.{$error_type}.description"),
+            __("errors.{$error_type}.hint"),
+            __("errors.{$error_type}.message"),
+            $http_code
         );
     }
 }

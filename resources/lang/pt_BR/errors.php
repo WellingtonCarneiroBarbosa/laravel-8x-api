@@ -37,6 +37,12 @@ return [
         "message"       => "Registro não encontrada ou URI não encontrada."
     ],
 
+    "user_permission_denied" => [
+        "description"   => "O usuário não tem permissão para realizar esta ação.",
+        "hint"          => "Exiba a mensagem de permissão negada em seu aplicativo.",
+        "message"       => "Você não tem permissão para realizar esta ação."
+    ],
+
     "internal_server_error" => [
         "description"   => "Algo errado ocorreu com nosso servidor.",
         "hint"          => "Reporte o erro para o time de suporte.",

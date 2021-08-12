@@ -23,6 +23,12 @@ return [
         "hint"          => "Check the validity of your token."
     ],
 
+    "user_permission_denied" => [
+        "description"   => "User does not have permission to perform this action.",
+        "hint"          => "Display the permission denied message in your application.",
+        "message"       => "You are not allowed to perform this action."
+    ],
+
     "reset-password" => [
         "invalid_code" => [
             "description"   => "The password reset code is invalid or expired.",
