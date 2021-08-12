@@ -129,7 +129,7 @@ return [
 
     'web_client_provider_url' => env('WEB_CLIENT_PROVIDER', 'http://localhost:8000'),
 
-    'web_client_provider_franchise_secret' => env('WEB_CLIENT_PROVIDER_FRANCHISE_SECRET', 'franchise_secret'),
+    'web_client_provider_franchise_secret' => env('WEB_CLIENT_PROVIDER_FRANCHISE_SECRET', 'franchises_secret'),
 
     /*
     |--------------------------------------------------------------------------
