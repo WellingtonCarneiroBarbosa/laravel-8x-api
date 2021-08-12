@@ -125,7 +125,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'secrets' => env('APP_SECRETS', 'localhost_secret'),
+    'secrets' => env('APP_SECRETS', 'franchises_secret'),
 
     'web_client_provider_url' => env('WEB_CLIENT_PROVIDER', 'http://localhost:8000'),
 
