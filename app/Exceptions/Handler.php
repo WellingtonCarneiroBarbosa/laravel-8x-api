@@ -36,59 +36,61 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        if(! config('app.debug')) {
-            $this->renderable(function (Throwable $e, $request) {
-                if($e instanceof \Illuminate\Validation\ValidationException) {
-                    return apiResponser()->validationResponse(
-                        $e->errors(),
-                        __("errors.validation")
-                    );
-                }
-
-                if($e instanceof \Illuminate\Auth\AuthenticationException) {
-                    $error_type = "unauthenticated";
-
-                    return apiResponser()->errorResponse(
-                        $error_type,
-                        __("errors.{$error_type}.description"),
-                        __("errors.{$error_type}.hint"),
-                        $e->getMessage(),
-                        \Symfony\Component\HttpFoundation\Response::HTTP_UNAUTHORIZED
-                    );
-                }
-
-                if($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
-                    $error_type = "resource_not_found";
-
-                    return apiResponser()->errorResponse(
-                        $error_type,
-                        __("errors.{$error_type}.description"),
-                        __("errors.{$error_type}.hint"),
-                        __("errors.{$error_type}.message"),
-                        \Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND
-                    );
-                }
-
-                $error_type = "internal_server_error";
-
-                return apiResponser()->errorResponse(
-                $error_type,
-                    __("errors.{$error_type}.description"),
-                    __("errors.{$error_type}.hint"),
-                    __("errors.{$error_type}.message"),
-                    \Symfony\Component\HttpFoundation\Response::HTTP_INTERNAL_SERVER_ERROR
-                );
-            });
-        }
+        $this->renderable(function (Throwable $e, $request) {
+            //
+        });
     }
 
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $e)
     {
-        if ($exception instanceof QueryException) {
-            $message = mb_convert_encoding($exception->getMessage(), 'ASCII');
+        if ($e instanceof QueryException) {
+            $message = mb_convert_encoding($e->getMessage(), 'ASCII');
             throw new Exception($message);
         }
 
-        return parent::render($request, $exception);
+        if($e instanceof \Illuminate\Validation\ValidationException) {
+            return apiResponser()->validationResponse(
+                $e->errors(),
+                __("errors.validation")
+            );
+        }
+
+        if($e instanceof \Illuminate\Auth\AuthenticationException) {
+            $error_type = "unauthenticated";
+
+            return apiResponser()->errorResponse(
+                $error_type,
+                __("errors.{$error_type}.description"),
+                __("errors.{$error_type}.hint"),
+                $e->getMessage(),
+                \Symfony\Component\HttpFoundation\Response::HTTP_UNAUTHORIZED
+            );
+        }
+
+        if($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+            $error_type = "resource_not_found";
+
+            return apiResponser()->errorResponse(
+                $error_type,
+                __("errors.{$error_type}.description"),
+                __("errors.{$error_type}.hint"),
+                __("errors.{$error_type}.message"),
+                \Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND
+            );
+        }
+
+        if(! config('app.debug')) {
+            $error_type = "internal_server_error";
+
+            return apiResponser()->errorResponse(
+            $error_type,
+                __("errors.{$error_type}.description"),
+                __("errors.{$error_type}.hint"),
+                __("errors.{$error_type}.message"),
+                \Symfony\Component\HttpFoundation\Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+
+        return parent::render($request, $e);
     }
 }
